@@ -1,0 +1,19 @@
+body {
+background-color: #333;
+ color: #fff;
+ text-align: center;
+ font-family: geneva, verdana, "Comic Sans MS"
+ font-size: 15px;
+ }
+ a {
+ color: #fff;
+ padding: 5px;
+ border: 2px solid #fff;
+ background-color: #333;
+ text-decoration: none;
+ transition: 0.1s ease;
+ }
+ a:hover {
+ color: #333;
+ background-color: #fff;
+ }
