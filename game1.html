@@ -2,7 +2,28 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>JavaScript</title>
 <style>
+    
+body {
+background-color: #333;
+ color: #fff;
+ text-align: center;
+ font-family: geneva, verdana, "Comic Sans MS"
+ font-size: 15px;
+ }
+ a {
+ color: #fff;
+ padding: 5px;
+ border: 2px solid #fff;
+ background-color: #333;
+ text-decoration: none;
+ transition: 0.1s ease;
+ }
+ a:hover {
+ color: #333;
+ background-color: #fff;
+}
 canvas {
     border: 1px solid #d3d3d3;
     background-color: #fff;
@@ -22,7 +43,7 @@ var myScore;
 function startGame() {
     myGamePiece = new component(30, 30, "red", 10, 120);
     //myObstacle = new component(50, 200, "black", 300, 120); 
-     myScore = new component("30px", "Consolas", "blue", 280, 40, "text");
+     myScore = new component("30px", "Geneva", "blue", 280, 40, "text");
     myGameArea.start();
 }
 var myGameArea = {
