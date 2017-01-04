@@ -13,7 +13,7 @@ canvas {
 </style>
 </head>
 <body onload="startGame()">
-<p id = "endgame">Game Over :/, <a href="#">Try Again?</a></p>
+<p id = "endgame">Game Over :/, <a href="(Website address here)">Try Again?</a></p>
 <script>
 var myGamePiece;
 var myObstacles = [];
@@ -98,7 +98,7 @@ function updateGameArea() {
     }
     myGameArea.clear();
     myGameArea.frameNo += 1;
-    if (myGameArea.frameNo == 1 || everyinterval(40)) {
+    if (myGameArea.frameNo == 1 || everyinterval(40)) {//everyinterval(40) changes how often new obstacles appear
         x = myGameArea.canvas.width;
         minHeight = 20;
         maxHeight = 200;
@@ -110,7 +110,7 @@ function updateGameArea() {
         myObstacles.push(new component(50, x - height - gap, "black", x, height + gap));
     }
     for (i = 0; i < myObstacles.length; i += 1) {
-        myObstacles[i].x += -6;
+        myObstacles[i].x += -6; //Change speed of opstacle
         myObstacles[i].update();
     }
     if (myGameArea.x && myGameArea.y) {
