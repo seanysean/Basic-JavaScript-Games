@@ -5,20 +5,24 @@
 <style>
 canvas {
     border: 1px solid #d3d3d3;
-    background-color: #f1f1f1;
+    background-color: #fff;
 }
+#endgame {
+  display: none;
+  }
 </style>
 </head>
 <body onload="startGame()">
+<p id = "endgame">Game Over :/, <a href="#">Try Again?</a></p>
 <script>
 var myGamePiece;
-var myObstacle;
+var myObstacles = [];
 var myScore;
 
 function startGame() {
     myGamePiece = new component(30, 30, "red", 10, 120);
-    myObstacle = new component(50, 200, "black", 300, 120); 
-     myScore = new component("30px", "Consolas", "black", 280, 40, "text");
+    //myObstacle = new component(50, 200, "black", 300, 120); 
+     myScore = new component("30px", "Consolas", "blue", 280, 40, "text");
     myGameArea.start();
 }
 var myGameArea = {
@@ -84,23 +88,40 @@ function component(width, height, color, x, y, type) {
     }
 }
 function updateGameArea() {
-    if (myGamePiece.crashWith(myObstacle)) {
-        myGameArea.stop();
-    } else {
-    myGameArea.frameNo += 1;
+    var x, y;
+    for (i = 0; i < myObstacles.length; i += 1) {
+        if (myGamePiece.crashWith(myObstacles[i])) {
+            myGameArea.stop();
+            document.getElementById("endgame").style.display = "block";
+            return;
+        } 
+    }
     myGameArea.clear();
-     if (myGameArea.x && myGameArea.y) {
+    myGameArea.frameNo += 1;
+    if (myGameArea.frameNo == 1 || everyinterval(40)) {
+        x = myGameArea.canvas.width;
+        minHeight = 20;
+        maxHeight = 200;
+        height = Math.floor(Math.random()*(maxHeight-minHeight+1)+minHeight);
+        minGap = 50;
+        maxGap = 200;
+        gap = Math.floor(Math.random()*(maxGap-minGap+1)+minGap);
+        myObstacles.push(new component(50, height, "black", x, 0));
+        myObstacles.push(new component(50, x - height - gap, "black", x, height + gap));
+    }
+    for (i = 0; i < myObstacles.length; i += 1) {
+        myObstacles[i].x += -6;
+        myObstacles[i].update();
+    }
+    if (myGameArea.x && myGameArea.y) {
         myGamePiece.x = myGameArea.x;
         myGamePiece.y = myGameArea.y;
     }
     myScore.text="SCORE: " + myGameArea.frameNo;
     myScore.update();
-    myObstacle.x += -5;
-    myObstacle.update();
     myGamePiece.update();
-     myGamePiece.x += 1;
 }
-}
+
 </script>
 </body>
 </html>
