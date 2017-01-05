@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>JavaScript</title>
+    <title>JavaScript game #1</title>
 <style>
     
 body {
@@ -101,6 +101,7 @@ function component(width, height, color, x, y, type) {
         var othertop = otherobj.y;
         var otherbottom = otherobj.y + (otherobj.height);
         var crash = true;
+            alert("Your score:"+myGameArea.frameNo);
         if ((mybottom < othertop) ||
                (mytop > otherbottom) ||
                (myright < otherleft) ||
