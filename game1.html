@@ -2,18 +2,40 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>JavaScript game #1</title>
 <style>
+    
+body {
+background-color: #333;
+ color: #fff;
+ font-family: geneva, verdana, "Comic Sans MS";
+ font-size: 15px;
+ }
+ a {
+ color: #fff;
+ padding: 5px;
+ border: 2px solid #fff;
+ background-color: #333;
+ text-decoration: none;
+ transition: 0.1s ease;
+ }
+ a:hover {
+ color: #333;
+ background-color: #fff;
+}
 canvas {
     border: 1px solid #d3d3d3;
     background-color: #fff;
+    float: left;
 }
 #endgame {
   display: none;
   }
 </style>
 </head>
-<body onload="startGame()">
-<p id = "endgame">Game Over :/, <a href="(Website address here)">Try Again?</a></p>
+<body>
+    <a id="start" onClick="startGame()">Start Game</a>
+<p id = "endgame">Your score was <i id = "scoreCount"></i><a href="https://seanysean.github.io/Basic-JavaScript-Games/game1.html">Try Again?</a></p>
 <script>
 var myGamePiece;
 var myObstacles = [];
@@ -22,8 +44,9 @@ var myScore;
 function startGame() {
     myGamePiece = new component(30, 30, "red", 10, 120);
     //myObstacle = new component(50, 200, "black", 300, 120); 
-     myScore = new component("30px", "Consolas", "blue", 280, 40, "text");
+     myScore = new component("30px", "Geneva", "blue", 280, 40, "text");
     myGameArea.start();
+    document.getElementById("start").style.display = "none";
 }
 var myGameArea = {
     canvas : document.createElement("canvas"),
@@ -78,22 +101,28 @@ function component(width, height, color, x, y, type) {
         var othertop = otherobj.y;
         var otherbottom = otherobj.y + (otherobj.height);
         var crash = true;
+            
         if ((mybottom < othertop) ||
                (mytop > otherbottom) ||
                (myright < otherleft) ||
                (myleft > otherright)) {
            crash = false;
+            
         }
         return crash;
+        
     }
 }
 function updateGameArea() {
     var x, y;
     for (i = 0; i < myObstacles.length; i += 1) {
         if (myGamePiece.crashWith(myObstacles[i])) {
+        
             myGameArea.stop();
             document.getElementById("endgame").style.display = "block";
+            document.getElementById("scoreCount").innerHTML = myGameArea.frameNo;
             return;
+            
         } 
     }
     myGameArea.clear();
@@ -125,3 +154,4 @@ function updateGameArea() {
 </script>
 </body>
 </html>
+
