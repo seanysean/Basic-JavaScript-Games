@@ -8,7 +8,6 @@
 body {
 background-color: #333;
  color: #fff;
- text-align: center;
  font-family: geneva, verdana, "Comic Sans MS";
  font-size: 15px;
  }
@@ -34,7 +33,8 @@ canvas {
   }
 </style>
 </head>
-<body onload="startGame()">
+<body>
+    <a id="start" onClick="startGame()">Start Game</a>
 <p id = "endgame">Game Over :/, <a href="https://seanysean.github.io/Basic-JavaScript-Games/game1.html">Try Again?</a></p>
 <script>
 var myGamePiece;
@@ -46,6 +46,7 @@ function startGame() {
     //myObstacle = new component(50, 200, "black", 300, 120); 
      myScore = new component("30px", "Geneva", "blue", 280, 40, "text");
     myGameArea.start();
+    document.getElementById("start").style.display = "none";
 }
 var myGameArea = {
     canvas : document.createElement("canvas"),
