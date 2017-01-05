@@ -35,7 +35,8 @@ canvas {
 </head>
 <body>
     <a id="start" onClick="startGame()">Start Game</a>
-<p id = "endgame">Game Over :/, <a href="https://seanysean.github.io/Basic-JavaScript-Games/game1.html">Try Again?</a></p>
+
+<p id = "endgame">Your score was <i id = "scoreCount"></i><a href="https://seanysean.github.io/Basic-JavaScript-Games/game1.html">Try Again?</a></p>
 <script>
 var myGamePiece;
 var myObstacles = [];
@@ -107,18 +108,21 @@ function component(width, height, color, x, y, type) {
                (myright < otherleft) ||
                (myleft > otherright)) {
            crash = false;
-            alert("Your score:"+myGameArea.frameNo);
         }
         return crash;
+        
     }
 }
 function updateGameArea() {
     var x, y;
     for (i = 0; i < myObstacles.length; i += 1) {
         if (myGamePiece.crashWith(myObstacles[i])) {
+        
             myGameArea.stop();
             document.getElementById("endgame").style.display = "block";
+            document.getElementById("scoreCount").innerHTML = myGameArea.frameNo;
             return;
+            
         } 
     }
     myGameArea.clear();
@@ -150,3 +154,4 @@ function updateGameArea() {
 </script>
 </body>
 </html>
+
