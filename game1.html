@@ -35,6 +35,7 @@ canvas {
 </head>
 <body>
     <a id="start" onClick="startGame()">Start Game</a>
+
 <p id = "endgame">Your score was <i id = "scoreCount"></i><a href="https://seanysean.github.io/Basic-JavaScript-Games/game1.html">Try Again?</a></p>
 <script>
 var myGamePiece;
@@ -107,7 +108,6 @@ function component(width, height, color, x, y, type) {
                (myright < otherleft) ||
                (myleft > otherright)) {
            crash = false;
-            
         }
         return crash;
         
