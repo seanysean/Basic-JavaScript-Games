@@ -2,6 +2,31 @@
 <html>
 <head>
 <title>Page Title</title>
+<style>
+#score {
+font-size: 5em;
+}
+body {
+background-color: #333;
+ color: #fff;
+ text-align: center;
+ font-family: geneva, verdana, "Comic Sans MS";
+ font-size: 15px;
+ }
+ a {
+ color: #fff;
+ padding: 5px;
+ border: 2px solid #fff;
+ background-color: #333;
+ text-decoration: none;
+ transition: 0.1s ease;
+ }
+ a:hover {
+ color: #333;
+ background-color: #fff;
+}
+</style>
+
 </head>
 <body>
 <noscript>You must enable JavaScript!</noscript>
@@ -10,15 +35,17 @@
 
   
   var question1 = prompt("Yes/No: Is Chess a game?").toUpperCase();
-  var question2 = prompt("Yes/No: Do trillions of people play chess?").toUpperCase();
-  var question3 = prompt("After 1.e4 is 1...d4 a blunder?").toUpperCase();
+  var question2 = prompt("Yes/No: Do more than 100 billion people play chess?").toUpperCase();
+  var question3 = prompt("After 1.e4 is 1...g5 a legal move?").toUpperCase();
   var question4 = prompt("Yes/No: In chess, GM stands for 'Great Man'").toUpperCase();
   var question5 = prompt("Yes/No: Stalemate is when two pieces could move, but would lose the queen.").toUpperCase();
   var question6 = prompt("Yes/No: Is it possible to move two pieces at once?").toUpperCase();
-  var question7 = prompt("Yes/No: Is it possible to take a pawn with a pawn?").toUpperCase();
+  var question7 = prompt("Yes/No: Is it possible to take a pawn with a pawn without moving a pawn?").toUpperCase();
   var question8 = prompt("Yes/No: Was Magnus Carlson ever a world chess champion?").toUpperCase();
   var question9 = prompt("Yes/No: Did you get every question right?").toUpperCase();
-  var question10 = prompt("Yes/No: Is this the second-last question?").toUpperCase();
+  var question10 = prompt("Yes/No: Is this a chess related question?").toUpperCase();
+  var question11 = prompt("Yes/No: Did Carlsen win the World Chess Championship title by a brilliant rook sacrifice on his 26th birthday?").toUpperCase();
+  var scoreguess = prompt("What do you think your score is? If you gain one point \n each correct answer and lose one each incorect answer. \n If you type nothing, you lose nothing. \n If you correctly guess, you get +5 points, else, you lose 2.");
   var score = 0;
     if (question1 === "YES") {
       score = score + 1;
@@ -83,8 +110,23 @@
        else {
        score = score - 1;
        }
+        if (question11 === "NO") {
+        score = score + 1;
+       }
+       else {
+       score = score - 1;
+       }
+       if (scoreguess == score) {
+       score = score + 5;
+       }
+       else if (scoreguess === "") {
+       score = score + 0;
+       }
+       else {
+       score = score - 1;
+       }
        
-  document.getElementById("score").innerHTML = score;
+  document.getElementById("score").innerHTML = "Your score was: "+score;
 </script>
 </body>
 </html>
