@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+<noscript>You must enable JavaScript!</noscript>
+<p id="score"></p>
+<script>
+
+  
+  var question1 = prompt("Yes/No: Is Chess a game?").toUpperCase();
+  var question2 = prompt("Yes/No: Do trillions of people play chess?").toUpperCase();
+  var question3 = prompt("After 1.e4 is 1...d4 a blunder?").toUpperCase();
+  var question4 = prompt("Yes/No: In chess, GM stands for 'Great Man'").toUpperCase();
+  var question5 = prompt("Yes/No: Stalemate is when two pieces could move, but would lose the queen.").toUpperCase();
+  var question6 = prompt("Yes/No: Is it possible to move two pieces at once?").toUpperCase();
+  var question7 = prompt("Yes/No: Is it possible to take a pawn with a pawn?").toUpperCase();
+  var question8 = prompt("Yes/No: Was Magnus Carlson ever a world chess champion?").toUpperCase();
+  var question9 = prompt("Yes/No: Did you get every question right?").toUpperCase();
+  var question10 = prompt("Yes/No: Is this the second-last question?").toUpperCase();
+  var score = 0;
+    if (question1 === "YES") {
+      score = score + 1;
+       }
+       else {
+       score = score - 1;
+       }
+     if (question2 === "NO") {
+       score = score + 1;
+       }
+       else {
+       score = score - 1;
+       }
+       if (question3 === "YES") {
+       score = score + 1;
+       }
+       else {
+       score = score - 1;
+       }
+       if (question4 === "NO") {
+       score = score + 1;
+       }
+       else {
+       score = score - 1;
+       }
+       if (question5 === "NO") {
+       score = score + 1;
+       }
+       else {
+       score = score - 1;
+       }
+       if (question6 === "YES") {
+       score = score + 1;
+       }
+       else {
+       score = score - 1;
+       }
+       if (question7 === "YES") {
+       score = score + 1;
+       }
+       else {
+       score = score - 1;
+       }
+       if (question8 === "NO") {
+       score = score + 1;
+       }
+       else {
+       score = score - 1;
+       }
+       if (question9 === "YES" && question8 === "NO" && question7 === "YES" && question6 === "YES" && question5 === "NO" && question4 === "NO" && question3 === "YES" && question2 === "NO" && question1 === "YES") {
+       score = score + 1;
+       }
+       else if (question9 === "NO") {
+       score = score + 1;
+       }
+       else {
+       score = score - 1;
+       }
+       if (question10 === "NO") {
+        score = score + 1;
+       }
+       else {
+       score = score - 1;
+       }
+       
+  document.getElementById("score").innerHTML = score;
+</script>
+</body>
+</html>
