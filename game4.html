@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+ <title>Basic keyboard game</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ <style>
+      * {
+   font-weight: 100;
+}
+
+body {
+   background: #509462;
+   background-image: linear-gradient(#143849, #509462);
+   background-size: cover;
+   background-position: center;
+   background-attachment: fixed;
+   color: #509462;
+   font-family: sans-serif;
+   font-size: 20px;
+}
+
+.scorebox {
+   display: inline-block;
+   border: 1px solid;
+   padding: 20px;
+   margin: 1%;
+   text-align: center;
+}
+
+.playerB {
+   background: #143849;
+   float: right;
+}
+
+.playerA {
+   background: #509462;
+   color: #143849;
+   float: left;
+   opacity: 0.9;
+}
+
+.rules {
+   position: fixed;
+   bottom: 0;
+   left: 0;
+   background: #143849;
+   padding: 5px 10px;
+   width: 100%;
+}
+
+.rules * {
+   display: inline-block;
+   font-size: 15px;
+}
+
+.close {
+   position: relative;
+   color: #4c0000;
+   padding: 5px 5px 0 5px;
+   background: #509462;
+   cursor: default;
+   transition: 0.5s ease;
+}
+
+.close:hover {
+   background: #4c0000;
+   color: #509462;
+}
+
+.menu {
+   position: fixed;
+   bottom: 5px;
+   right: 10px;
+   cursor: pointer;
+   transition: .25s ease;
+   display: none;
+   color: #143849;
+}
+
+.menu:hover {
+   color: #4c0000;
+   border: 1px solid #4c0000;
+   padding: 2px 5px;
+}
+
+.overlay {
+   position: fixed;
+   height: 100%;
+   width: 100%;
+   top: 0;
+   right: 0;
+   left: 0;
+   bottom: 0;
+   background: #333;
+   background: RGBa(0, 0, 0, 0.7);
+   z-index: 1;
+   text-align: center;
+   font-size: 50px;
+   display: none;
+}
+
+.small {
+   font-size: 20px;
+}
+
+.end {
+   font-size: 20px;
+   color: #fff;
+   border: 1px solid #fff;
+   text-transform: uppercase;
+   padding: 10px;
+   max-width: 200px;
+   margin: auto;
+   cursor: pointer;
+   text-decoration: none;
+}
+
+.end:hover {
+   color: #143849;
+   background: #fff;
+}
+.progressOuter {
+   height: 15px;
+   background: #693244;
+}
+.progress {
+   width: 0%;
+   height: 100%;
+   background: #1ff111;
+   /*background: linear-gradient(to left,#1ff111,#693244 110%);*/
+}
+    </style>  
+</head>
+  <body onKeyUp="if (event.keyCode === 65 || event.keyCode === 97) { playerApt()}
+               else if(event.keyCode === 108 || event.keyCode === 76) playerBpt()">
+<div class="overlay" id="overlay">
+   <p>Player <span id="gameWinner"></span> Wins</p>
+   <p class="small">Player <span id="gameWinner2"></span> was the first to reach 100</p>
+   <div class="end" onclick="playAgain()">Play Again</div>
+   <a class="end" href="https://seanysean.github.io/Basic-JavaScript-Games/">More Games</a>
+</div>
+<div class="playerA scorebox">
+   <h2>Player A</h2>
+   <p>Score: <span id="playAsc">0</span></p>
+   <div class="progressOuter">
+      <div class="progress" id="pro1">
+      </div>
+   </div>
+</div>
+<div class="playerB scorebox">
+   <h2>Player L</h2>
+   <p>Score: <span id="playBsc">0</span></p>
+   <div class="progressOuter">
+      <div class="progress" id="pro2">
+      </div>
+   </div>
+</div>
+<div class="rules" id="rules">
+   <span>Rules: Win by being the first of two players 
+         to reach a score of 100! To up your score,
+         press the key name after the player name. 
+         (Player A presses the A key for ex.)
+         Make sure you have the page in focus!
+      <span id="close" class="close" onclick="closeRule()">X</span>
+   </span>   
+</div>
+<span id="menu" class="menu fa fa-navicon"
+      onclick="opnRule()"></span>
+    <script>
+    var plaL = document.getElementById("playBsc"),
+   cls = document.getElementById("close"),
+   rulesVar = document.getElementById("rules"),
+   opn = document.getElementById("menu"),
+   scoreA = 0,
+   scoreB = 0,
+   plaA = document.getElementById("playAsc"),
+   blah = document.getElementById("gameWinner"),
+   blahTwo = document.getElementById("gameWinner2"),
+   overlay = document.getElementById("overlay"),
+   pro1 = document.getElementById("pro1"),
+   pro2 = document.getElementById("pro2");
+function closeRule() {
+   rulesVar.style.display = "none";
+   opn.style.display = "block";
+}
+
+function opnRule() {
+   rulesVar.style.display = "block";
+   opn.style.display = "none";
+}
+
+function playAgain() {
+   window.location.reload(true);
+};
+function gameOver(player) {
+   overlay.style.display = "block";
+   blah.innerHTML = player;
+   blahTwo.innerHTML = player;
+   alert("Player " + player + " officially wins the game with a score of 100.");
+}
+function playerApt() {
+   scoreA += 1;
+   plaA.innerHTML = scoreA;
+   pro1.style.width = scoreA + "%";
+   if (scoreA === 100 && scoreB < 100) {
+      gameOver("A");
+   }
+}
+
+function playerBpt() {
+   scoreB += 1;
+   plaL.innerHTML = scoreB;
+   pro2.style.width = scoreB + "%";
+   if (scoreB === 100 && scoreA < 100) {
+      gameOver("L");
+   }
+}
+  </script>
+</body>
+</html>
+ 
